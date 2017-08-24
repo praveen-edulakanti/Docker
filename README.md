@@ -1,4 +1,227 @@
 # Docker
+Docker is one of the technology in Devops.
+
+Docker is a platform for developing , shipping and running applications using container virtualization technology.
+
+Docker container as a service (CAAS)
+Docker separates the applications from infrastructure using container technology,
+similar to how virtual machines separate the operating system from the bare metal.
+
+Virtual Machines::
+Each virtualized application includes not only the  application which may be only 10’s of MB and the necessary binaries and libraries but also an entire operating system which may weigh 10’s of GB.
+
+Docker::
+The docker engine container comprises just the application and its dependencies.It run as an isolated process in user space on the host operating system.
+Thus it enjoys the resource isolation and allocation benefits of VM’s but is much more portable and efficient.
+
+Docker benefits::
+Scalable : easily scale up or down can be done.
+portable : by making use of snap shots.
+Deployment : is very easy.
+Density : is very high.because of resource isolation, we can have more number of application running on same operating system.
+
+Docker Core components::
+ Docker Daemon:
+        			Docker engine runs on the host machine.
+                                    We will spin up Containers inside the Docker Daemon.
+      2)    Docker Client:
+			CLI used to interact with the Daemon.
+   
+Building Docker on non-linux kernel is somewhat different when compared to building docker on linux kernel.The Docker daemon uses the Linux kernel, so it isn’t possible to run Docker natively on a non-Linux PC. To get around this, the Docker team created a helper tool called Boot2Docker.
+Boot2Docker::
+The Boot2Docker installation package contains a VirtualBox virtual machine, the Boot2Docker tool, and Docker itself. The virtual machine included in the package is a lightweight Linux VirtualBox image that provides all the Linux kernel related features required by the Docker daemon.
+In effect, what happens is: the Linux VM runs on top of your native OS and the Docker daemon uses the Linux VM for all its Linux kernel dependencies.
+
+
+
+
+
+Docker Workflow components::
+Docker image : Holds the environment and your application.
+Docker Container : Created from images,Start,Stop,Move,Delete
+Docker registry :  public or private repositories used to store images.
+Dockerfile : Automates image construction.
+
+If a container is  created from the image and if any changes made to image then containers will automatically bring those changes to them.
+There is a docker hub which is used to store docker images.
+
+
+
+From docker registry, we can push or pull images to our local server.
+upon run on these images. we can build containers.
+upon commit , if any changes are made in the images, those changes will be replicated in the containers. 
+we can also tag images like version-1 and version-2 images.
+Using build, we can automate the image construction using Dockerfile.
+
+Installing Docker engine on ubuntu:::
+type the following command.
+                             wget -qO- https://get.docker.com/ | sh
+                    wget options:
+                                        q tells wget to operate quietly i.e not output the usual status information.
+                                         O- tells send it output to /dev/null
+2) Testing the installation
+                use the following command.
+                  sudo docker run hello-world
+If everything is installed correctly, it will print the following output.
+“”””””””””
+Hello from Docker.
+This message shows that your installation appears to be working correctly.
+
+“””””””””””
+If needed , start the service docker...using the following command.
+
+           Sudo service docker start‘
+
+There will be a group created in the name of “daemon”
+if we added current user to this daemon group then we don’t need to run the docker commands  using sudo.
+without sudo we can run the docker commands.
+let us say the current user is ubuntu.
+use the following command to add ubuntu user to daemon group.
+“”sudo chmod -aG daemon root””
+Option explanation::
+    -G means new list of supplementary groups means the groups that are created with third party softwares just like the daemon group.
+check these groups  at below file
+“/etc/passwd”
+    -a means 
+                  append the user to the “Supplemental groups mentioned by the -G option without removing him/her from other groups.
+
+Docker has client server architecture.
+client take user inputs and sends them to the daemon. where daemon is the server running on some host.
+Daemon builds,runs and distribute containers.
+Client and Daemon can run on the same host or on different hosts.
+we can use either
+             CLI Client 
+ GUI Client (Kitematic)	
+
+docker version command will give the both 
+     client and server(Daemon) versions.
+
+
+Docker Images and Containers::::::::::
+Images:::::
+            Read only template used to create containers.These may be built by us or some other docker users. These images are stored in Docker Hub or our local registry.
+Docker Hub is a Public Registry.
+Containers:::::
+             These are isolated application platform.It contains everything needed to run your application.
+Containers may be based on 	one or more images.
+
+Docker Orchestration:::::
+Three tools for orchestrating distributed applications with Docker.
+Docker machine : 
+                  Tool that provisions Docker hosts and installs the docker engine on them.
+     2)  Docker swarm:
+                 Tool that clusters many engines and schedule containers.
+     3)  Docker compose:
+          Tool to create and manage multi-container applications.
+
+Displaying local images::::::::::
+
+we use the following command to display the local images
+docker images
+
+When creating a container, always it will attempt to use a local image first. If no local image is found, the Docker daemon will look in Docker Hub unless another registry is specified.
+
+Image Tags::::::::::
+images are specified by repository:tag
+The same image may have multiple tags. The default tag is the latest.
+
+
+
+
+Creating a Container:::
+we use docker run command.
+Syntax::::
+sudo docker run [options] [image] [command] [arguments]
+Image is specified with repository:tag
+Examples:
+
+docker run ubuntu:14.04 echo “Hello world”
+
+for first time run of this command, it will take more time because it has to download that image from public repository.
+from next time, the time  taken for this command is very less since this image will found locally.
+
+
+next type the following command.
+docker run ubuntu ps
+ps is the command we supplied to docker run.
+It will have a process id of 1
+***********************************
+The command we supplied at the time of docker run will alway have a process id of “”””ONE”””” 
+How to run a container with terminal:::
+we need to use -i and -t flags with docker run.
+The Flag -i tells docker to connect to STDIN on the container.
+The Flag -t specifies to get a Pseudo-terminal.
+
+we need to run a terminal process as our command like /bin/bash
+sudo docker run -i -t ubuntu:latest /bin/bash
+
+then type ps command to view the process id’s
+bash will have a process id of ONE.
+type the following commands in container:::
+adduser vinodh
+adduser vinodh sudo  # adding vinodh to sudo group.
+su vinodh
+sudo apt-get install vim
+vim test..py
+exit    # to come out of vinodh account.
+exit # to come out of the container account.
+once we type exit in terminal of a container,it will shut down the container.
+since it will kill the bash process.
+
+Now run the command as above and try to switch to vinodh user.
+sudo docker run -i -t ubuntu:latest /bin/bash
+su vinodh 
+it will give error saying that “””””””No passwd entry for user ‘vinodh’”””””””””””””””””
+try open /etc/passwd file , we can not find any user with name vinodh.
+The conclusion from here is,
+it will start the new container.
+
+
+A container only runs as long as the process from your specified docker run command is running.This command’s process is always PID 1 inside the container.
+
+We can exit from the container by using CTRL+P+Q
+
+again run the container using this.
+sudo docker run -it ubuntu bash
+to start the bash shell of a container.
+
+Container ID:
+     Containers can be specified using their ID or name.
+There will be long ID and short ID
+Short ID and name can be obtained using “docker ps” command to list the containers.
+Long ID is obtained by inspecting the container.
+
+
+use “docker ps” to list running containers.
+use the flag -a to list all containers including the containers that are stopped.
+
+
+Running in Detached mode:::::
+Also known as running in the background or as a daemon mode.
+use flag -d to run in the detached mode.
+To observe output use the following command.
+docker logs [container id]
+container id can be seen from the following command.
+docker ps 
+example:
+docker run -d centos:7 ping 127.0.0.1 -c 200
+now type docker ps
+if ping action is not completed within this time, then docker ps command will show the centos container.
+if ping action is completed by the time you run docker ps command then this command will not show the current container.
+it will be visible using docker ps -a command.
+To observer the output use the following command.
+docker logs container id
+here container id is the short name that is visible after you run docker ps command.
+To view the process that is going on , use the following command.
+docker logs -f container id.
+
+
+Running a web application in a container::::
+The -P flag is used to map container ports to host ports.
+
+Create a container using a tomcat image, run in detached mode and map the tomcat ports to the host port.
+
+docker run -d -P tomcat:7
 
 ubuntu:trusty docker image will contains all the default commands that will come
 with the ubuntu operating system.
