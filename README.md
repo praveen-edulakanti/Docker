@@ -8,11 +8,11 @@ Docker is a platform for developing , shipping and running applications using co
 Docker separates the applications from infrastructure using container technology,</br>
 similar to how virtual machines separate the operating system from the bare metal.</br>
 
-**Virtual Machines::**
+**Virtual Machines::**</br>
 Each virtualized application includes not only the  application which may be only 10’s of MB and the necessary binaries and </br>
 libraries but also an entire operating system which may weigh 10’s of GB.
 
-**Docker::**
+**Docker::**</br>
 The docker  container comprises just the application and its dependencies.It run as an isolated process in user space on the </br>
 host operating system. Thus it enjoys the resource isolation and allocation benefits of VM’s but is much more portable and efficient.
 
@@ -21,7 +21,8 @@ host operating system. Thus it enjoys the resource isolation and allocation bene
   Scalable : easily scale up or down can be done.
   portable : by making use of snap shots.
   Deployment : is very easy.
-  Density : is very high.because of resource isolation, we can have more number of application running on same operating system.
+  Density : is very high.because of resource isolation, we can have more number of application
+            running on same operating system.
 ```
 **Docker Core components::**
 ```
