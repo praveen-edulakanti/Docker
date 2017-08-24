@@ -1,52 +1,51 @@
 # Docker
-Docker is one of the technology in Devops.
 
-Docker is a platform for developing , shipping and running applications using container virtualization technology.
+Docker is one of the technology in Devops.</br>
 
-Docker container as a service (CAAS)
-Docker separates the applications from infrastructure using container technology,
-similar to how virtual machines separate the operating system from the bare metal.
+Docker is a platform for developing , shipping and running applications using container virtualization technology.</br>
 
-Virtual Machines::
-Each virtualized application includes not only the  application which may be only 10’s of MB and the necessary binaries and libraries but also an entire operating system which may weigh 10’s of GB.
+**Docker container as a service (CAAS)::**</br>
+Docker separates the applications from infrastructure using container technology,</br>
+similar to how virtual machines separate the operating system from the bare metal.</br>
 
-Docker::
-The docker engine container comprises just the application and its dependencies.It run as an isolated process in user space on the host operating system.
-Thus it enjoys the resource isolation and allocation benefits of VM’s but is much more portable and efficient.
+**Virtual Machines::***
+Each virtualized application includes not only the  application which may be only 10’s of MB and the necessary binaries and </br>
+libraries but also an entire operating system which may weigh 10’s of GB.
 
-Docker benefits::
-Scalable : easily scale up or down can be done.
-portable : by making use of snap shots.
-Deployment : is very easy.
-Density : is very high.because of resource isolation, we can have more number of application running on same operating system.
+**Docker::**
+The docker  container comprises just the application and its dependencies.It run as an isolated process in user space on the </br>
+host operating system. Thus it enjoys the resource isolation and allocation benefits of VM’s but is much more portable and efficient.
 
-Docker Core components::
- Docker Daemon:
-        			Docker engine runs on the host machine.
-                                    We will spin up Containers inside the Docker Daemon.
-      2)    Docker Client:
-			CLI used to interact with the Daemon.
-   
+**Docker benefits::**
+```
+  Scalable : easily scale up or down can be done.
+  portable : by making use of snap shots.
+  Deployment : is very easy.
+  Density : is very high.because of resource isolation, we can have more number of application running on same operating system.
+```
+**Docker Core components::**
+```
+ 1) Docker Daemon:</br>
+   	Docker engine runs on the host machine.</br>
+        We will spin up Containers inside the Docker Daemon.</br>
+ 2) Docker Client:</br>
+	CLI used to interact with the Daemon.</br>
+```   
 Building Docker on non-linux kernel is somewhat different when compared to building docker on linux kernel.The Docker daemon uses the Linux kernel, so it isn’t possible to run Docker natively on a non-Linux PC. To get around this, the Docker team created a helper tool called Boot2Docker.
-Boot2Docker::
-The Boot2Docker installation package contains a VirtualBox virtual machine, the Boot2Docker tool, and Docker itself. The virtual machine included in the package is a lightweight Linux VirtualBox image that provides all the Linux kernel related features required by the Docker daemon.
-In effect, what happens is: the Linux VM runs on top of your native OS and the Docker daemon uses the Linux VM for all its Linux kernel dependencies.
+**Boot2Docker::**
+The Boot2Docker installation package contains a VirtualBox virtual machine, the Boot2Docker tool, and Docker itself. The virtual machine included in the package is a lightweight Linux VirtualBox image that provides all the Linux kernel related features required by the Docker daemon.</br>
+In effect, what happens is:</br>
+the Linux VM runs on top of your native OS and the Docker daemon uses the Linux VM for all its Linux kernel dependencies.
 
-
-
-
-
-Docker Workflow components::
-Docker image : Holds the environment and your application.
+**Docker Workflow components::**
+```
+Docker image     : Holds the environment and your application.
 Docker Container : Created from images,Start,Stop,Move,Delete
-Docker registry :  public or private repositories used to store images.
-Dockerfile : Automates image construction.
-
+Docker registry  :  public or private repositories used to store images.
+Dockerfile       : Automates image construction.
+```
 If a container is  created from the image and if any changes made to image then containers will automatically bring those changes to them.
 There is a docker hub which is used to store docker images.
-
-
-
 From docker registry, we can push or pull images to our local server.
 upon run on these images. we can build containers.
 upon commit , if any changes are made in the images, those changes will be replicated in the containers. 
