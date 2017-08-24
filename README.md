@@ -8,7 +8,7 @@ Docker is a platform for developing , shipping and running applications using co
 Docker separates the applications from infrastructure using container technology,</br>
 similar to how virtual machines separate the operating system from the bare metal.</br>
 
-**Virtual Machines::***
+**Virtual Machines::**
 Each virtualized application includes not only the  application which may be only 10’s of MB and the necessary binaries and </br>
 libraries but also an entire operating system which may weigh 10’s of GB.
 
@@ -25,11 +25,11 @@ host operating system. Thus it enjoys the resource isolation and allocation bene
 ```
 **Docker Core components::**
 ```
- 1) Docker Daemon:</br>
-   	Docker engine runs on the host machine.</br>
-        We will spin up Containers inside the Docker Daemon.</br>
- 2) Docker Client:</br>
-	CLI used to interact with the Daemon.</br>
+ 1) Docker Daemon:
+   	Docker engine runs on the host machine.
+        We will spin up Containers inside the Docker Daemon.
+ 2) Docker Client:
+	CLI used to interact with the Daemon.
 ```   
 Building Docker on non-linux kernel is somewhat different when compared to building docker on linux kernel.The Docker daemon uses the Linux kernel, so it isn’t possible to run Docker natively on a non-Linux PC. To get around this, the Docker team created a helper tool called Boot2Docker.
 **Boot2Docker::**
