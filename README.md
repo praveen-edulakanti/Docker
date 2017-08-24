@@ -18,11 +18,11 @@ host operating system. Thus it enjoys the resource isolation and allocation bene
 
 **Docker benefits::**
 ```
-  Scalable : easily scale up or down can be done.
-  portable : by making use of snap shots.
+  Scalable   : easily scale up or down can be done.
+  portable   : by making use of snap shots.
   Deployment : is very easy.
-  Density : is very high.because of resource isolation, we can have more number of application
-            running on same operating system.
+  Density    : is very high.because of resource isolation, we can have more number of application
+               running on same operating system.
 ```
 **Docker Core components::**
 ```
@@ -45,23 +45,26 @@ Docker Container : Created from images,Start,Stop,Move,Delete
 Docker registry  :  public or private repositories used to store images.
 Dockerfile       : Automates image construction.
 ```
-If a container is  created from the image and if any changes made to image then containers will automatically bring those changes to them.
-There is a docker hub which is used to store docker images.
-From docker registry, we can push or pull images to our local server.
-upon run on these images. we can build containers.
-upon commit , if any changes are made in the images, those changes will be replicated in the containers. 
-we can also tag images like version-1 and version-2 images.
-Using build, we can automate the image construction using Dockerfile.
+If a container is  created from the image and if any changes made to image then containers will automatically bring those changes to them.</br>
+There is a docker hub which is used to store docker images.</br>
+From docker registry, we can push or pull images to our local server.</br>
+upon run on these images. we can build containers.</br>
+upon commit , if any changes are made in the images, those changes will be replicated in the containers. </br> 
+we can also tag images like version-1 and version-2 images. </br>
+Using build, we can automate the image construction using Dockerfile. </br>
 
-Installing Docker engine on ubuntu:::
-type the following command.
-                             wget -qO- https://get.docker.com/ | sh
-                    wget options:
-                                        q tells wget to operate quietly i.e not output the usual status information.
-                                         O- tells send it output to /dev/null
-2) Testing the installation
-                use the following command.
-                  sudo docker run hello-world
+**Installing Docker engine on ubuntu::**</br>
+Type the following command.
+```
+wget -qO- https://get.docker.com/ | sh
+wget options:
+  q tells wget to operate quietly i.e not output the usual status information.
+  O- tells send it output to /dev/null
+```
+2) For testing the installation use the following command.
+ ```
+ sudo docker run hello-world
+ ```
 If everything is installed correctly, it will print the following output.
 “”””””””””
 Hello from Docker.
@@ -69,9 +72,9 @@ This message shows that your installation appears to be working correctly.
 
 “””””””””””
 If needed , start the service docker...using the following command.
-
-           Sudo service docker start‘
-
+```
+sudo service docker start
+```
 There will be a group created in the name of “daemon”
 if we added current user to this daemon group then we don’t need to run the docker commands  using sudo.
 without sudo we can run the docker commands.
