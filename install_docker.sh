@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# This script will work only ubuntu operating system
 # Installation of Docker on ubuntu
 
 # Installing the Recommended extra packages
