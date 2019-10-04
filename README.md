@@ -1,5 +1,17 @@
 # Docker
 
+**Content:**
+
+```
+1) Introduction
+2) Installation and configuration
+3) Running and Managing the containers
+4) Docker Networking
+5) Docker Storage and Volumes
+6) Building the Docker Images
+7) Docker orchestration
+```
+
 Docker is one of the technology in Devops.</br>
 
 Docker is a platform for developing , shipping and running applications using container virtualization technology.</br>
@@ -32,11 +44,6 @@ host operating system. Thus it enjoys the resource isolation and allocation bene
  2) Docker Client:
 	CLI used to interact with the Daemon.
 ```   
-Building Docker on non-linux kernel is somewhat different when compared to building docker on linux kernel.The Docker daemon uses the Linux kernel, so it isn’t possible to run Docker natively on a non-Linux PC. To get around this, the Docker team created a helper tool called Boot2Docker.
-**Boot2Docker::**
-The Boot2Docker installation package contains a VirtualBox virtual machine, the Boot2Docker tool, and Docker itself. The virtual machine included in the package is a lightweight Linux VirtualBox image that provides all the Linux kernel related features required by the Docker daemon.</br>
-In effect, what happens is:</br>
-the Linux VM runs on top of your native OS and the Docker daemon uses the Linux VM for all its Linux kernel dependencies.
 
 **Docker Workflow components::**
 ```
