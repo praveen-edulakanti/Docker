@@ -2,7 +2,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 CREATE DATABASE IF NOT EXISTS demo;
-CREATE USER 'remoteusr'@'%' IDENTIFIED BY 'passw@rd123';
+CREATE USER 'remoteusr'@'%' IDENTIFIED BY 'remotepwd';
 GRANT ALL ON *.* TO 'remoteusr'@'%' IDENTIFIED BY 'remotepwd';
 use demo;
 CREATE TABLE IF NOT EXISTS `users` (
