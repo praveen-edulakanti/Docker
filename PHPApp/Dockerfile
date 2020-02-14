@@ -24,7 +24,6 @@ RUN apt-get install -y php7.2 \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#VOLUME /var/lib/mysql
 
 # Configure apache for TYPO3
 RUN a2enmod rewrite expires
