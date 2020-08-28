@@ -22,6 +22,9 @@ RUN apt-get install -y php7.2 \
     php7.2 php7.2-curl \
     php7.2-mbstring
 
+RUN apt-get update && apt-get install -y \
+curl
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
